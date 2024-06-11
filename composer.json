@@ -1,0 +1,48 @@
+{
+    "name": "sabatinomasala/replicate-php",
+    "description": "PHP client for the Replicate API",
+    "keywords": [
+        "SabatinoMasala",
+        "replicate-php",
+        "replicate",
+        "machine",
+        "learning",
+        "AI",
+        "artificial",
+        "intelligence"
+    ],
+    "homepage": "https://github.com/SabatinoMasala/replicate-php",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "SabatinoMasala",
+            "email": "masalasabatino@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "saloonphp/saloon": "^2.5"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.2",
+        "spatie/ray": "^1.28"
+    },
+    "autoload": {
+        "psr-4": {
+            "SabatinoMasala\\Replicate\\": "src"
+        }
+    },
+    "scripts": {
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
