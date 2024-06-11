@@ -49,6 +49,23 @@ $output = $client->run('stability-ai/sdxl:7762fd07cf82c948538e41f63f77d685e02b06
 dd($output[0]);
 ```
 
+### Chaining multiple models
+
+Because 'run' returns the output of the model, you can chain multiple models together like this:
+
+```php
+$output = $client->run('stability-ai/sdxl:7762fd07cf82c948538e41f63f77d685e02b063e37e496e96eefd46c929f9bdc', [
+    'prompt' => 'a cat wearing a cowboy hat',
+]);
+
+$caption = $client->run('salesforce/blip:2e1dddc8621f72155f24cf2e0adbde548458d3cab9f00c0139eea840d0ac4746', [
+    'task' => 'image_captioning',
+    'image' => $output[0],
+]);
+
+dd($caption); // Caption: a drawing of a cat wearing a cowboy hat
+```
+
 ## Credits
 - Original creator of replicate-php: [sawirricardo](https://github.com/sawirricardo)
 - [sabatinomasala](https://github.com/sabatinomasala)
