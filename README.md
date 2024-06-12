@@ -4,7 +4,7 @@ This is a PHP client for Replicate. It lets you run models from your PHP code an
 
 ## Credits
 
-This package is based on the work of https://github.com/SabatinoMasala/replicate-php
+This package is based on the work of https://github.com/sawirricardo/replicate-php
 
 ## Installation
 
@@ -13,6 +13,10 @@ You can install the package via composer:
 ```bash
 composer require sabatinomasala/replicate-php
 ```
+
+## Getting an API token
+
+You can get an API token from [https://replicate.com/account/api-tokens]([url](https://replicate.com/account/api-tokens))
 
 ## Creating a prediction
 
@@ -64,6 +68,20 @@ $caption = $client->run('salesforce/blip:2e1dddc8621f72155f24cf2e0adbde548458d3c
 ]);
 
 dd($caption); // Caption: a drawing of a cat wearing a cowboy hat
+```
+
+## Usage with official models
+
+Offical models, like Llama, have a different API endpoint. This client automatically switches endpoints, based on the input you give:
+
+```php
+// This will do an API call to https://api.replicate.com/v1/models/meta/meta-llama-3-70b-instruct/predictions instead of https://api.replicate.com/v1/predictions
+$output = $replicate->run('meta/meta-llama-3-70b-instruct', [
+    'prompt' => 'I want to travel to Japan, give me an itinerary',
+    'max_tokens' => 1000,
+], function($prediction) {
+    \Log::info($prediction->json('output'));
+});
 ```
 
 ## Credits
