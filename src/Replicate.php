@@ -27,6 +27,9 @@ class Replicate extends Connector
         unset($data['wait'], $data['signal']);
 
         $prediction = $this->predictions()->create($ref, $data);
+        if ($prediction->clientError()) {
+            throw new \Exception('Failed to create prediction: ' . json_encode($prediction->json()));
+        }
 
         // Call progress callback with the initial prediction object
         if ($progress) {
