@@ -6,6 +6,12 @@ This is a PHP client for Replicate. It lets you run models from your PHP code an
 
 This package is based on the work of https://github.com/sawirricardo/replicate-php
 
+## Video
+
+If you're a more visual learner, you can check out this video this package is showcased:
+
+[![Watch the video](https://i9.ytimg.com/vi/gSGYvXG5kcQ/mqdefault.jpg?v=666c4ac0&sqp=CNywwLMG&rs=AOn4CLDYRyPcyvsGEJmWaEDPuhUl6N_7CQ)](https://youtu.be/vt5fpE0bzSY)
+
 ## Installation
 
 You can install the package via composer:
