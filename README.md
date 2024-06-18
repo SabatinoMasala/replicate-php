@@ -10,7 +10,7 @@ This package is based on the work of https://github.com/sawirricardo/replicate-p
 
 If you're a more visual learner, you can check out this video this package is showcased:
 
-[![Watch the video](https://i9.ytimg.com/vi/gSGYvXG5kcQ/mqdefault.jpg?v=666c4ac0&sqp=CNywwLMG&rs=AOn4CLDYRyPcyvsGEJmWaEDPuhUl6N_7CQ)](https://youtu.be/vt5fpE0bzSY)
+[![Watch the video](https://i3.ytimg.com/vi/gSGYvXG5kcQ/maxresdefault.jpg)](https://youtu.be/gSGYvXG5kcQ)
 
 ## Installation
 
