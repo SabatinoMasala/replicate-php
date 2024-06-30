@@ -95,7 +95,7 @@ class Replicate extends Connector
             throw new \Exception('Invalid prediction');
         }
 
-        if (in_array($prediction->json('id'), ['succeeded', 'failed', 'canceled'])) {
+        if (in_array($prediction->json('status'), ['succeeded', 'failed', 'canceled'])) {
             return $prediction;
         }
 
