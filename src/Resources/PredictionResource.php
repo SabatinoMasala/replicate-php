@@ -11,8 +11,9 @@ use SabatinoMasala\Replicate\Requests\GetPredictionRequest;
 
 class PredictionResource extends Resource
 {
-    public function create(string $ref, array $input)
+    public function create(string $ref, array $data)
     {
+        $input = isset($data['input']) ? $data['input'] : $data;
         $identifier = ModelVersionIdentifier::parse($ref);
         if (isset($identifier->version)) {
             $req = new CreatePredictionRequest;
@@ -21,6 +22,12 @@ class PredictionResource extends Resource
             $req = new CreateModelPredictionRequest("{$identifier->owner}/{$identifier->name}");
         } else {
             throw new \Exception('Invalid model version identifier');
+        }
+        if (isset($data['webhook'])) {
+            $req->body()->add('webhook', $data['webhook']);
+            if (isset($data['webhook_events_filter'])) {
+                $req->body()->add('webhook_events_filter', $data['webhook_events_filter']);
+            }
         }
         $req->body()->add('input', $input);
 
