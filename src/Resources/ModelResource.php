@@ -48,11 +48,13 @@ class ModelResource extends Resource
         return $this->connector->send($req);
     }
 
-    public function createTraining(string $version, array $input, string $destination, string $webhook)
+    public function createTraining(string $version, array $input, string $destination, string $webhook = null)
     {
         $req = new CreateTrainingRequest($this->owner, $this->name, $version, $destination);
         $req->body()->add('input', $input);
-        $req->body()->add('webhook', $webhook);
+        if (!empty($webhook)) {
+            $req->body()->add('webhook', $webhook);
+        }
 
         return $this->connector->send($req);
     }
