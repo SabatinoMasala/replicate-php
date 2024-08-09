@@ -60,7 +60,7 @@ class Replicate extends Connector
         }
 
         if ($prediction->json('status') === 'failed') {
-            throw new \Exception('Prediction failed: ' . $prediction->error);
+            throw new \Exception('Prediction failed: ' . $prediction->json('error'));
         }
 
         return $prediction->json('output');
@@ -95,7 +95,7 @@ class Replicate extends Connector
             throw new \Exception('Invalid prediction');
         }
 
-        if (in_array($prediction->json('id'), ['succeeded', 'failed', 'canceled'])) {
+        if (in_array($prediction->json('status'), ['succeeded', 'failed', 'canceled'])) {
             return $prediction;
         }
 
@@ -117,7 +117,7 @@ class Replicate extends Connector
         }
 
         if ($updatedPrediction->json('status') === 'failed') {
-            throw new \Exception('Prediction failed: ' . $updatedPrediction['error']);
+            throw new \Exception('Prediction failed: ' . $updatedPrediction->json('error'));
         }
 
         return $updatedPrediction;
