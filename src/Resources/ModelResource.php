@@ -2,6 +2,7 @@
 
 namespace SabatinoMasala\Replicate\Resources;
 
+use SabatinoMasala\Replicate\Requests\CreateModelRequest;
 use Saloon\Contracts\Connector;
 use SabatinoMasala\Replicate\Requests\CreateTrainingRequest;
 use SabatinoMasala\Replicate\Requests\GetAllModelVersionsRequest;
@@ -34,6 +35,19 @@ class ModelResource extends Resource
     public function getVersion(string $version)
     {
         return $this->connector->send(new GetModelVersionRequest($this->owner, $this->name, $version));
+    }
+
+    public function create($visibility = 'private', $hardware = 'cpu', $description = null)
+    {
+        $req = new CreateModelRequest();
+        $req->body()->add('owner', $this->owner);
+        $req->body()->add('name', $this->name);
+        $req->body()->add('visibility', $visibility);
+        $req->body()->add('hardware', $hardware);
+        if (!empty($description)) {
+            $req->body()->add('description', 'An example model');
+        }
+        return $this->connector->send($req);
     }
 
     public function createTraining(string $version, array $input, string $webhook)
