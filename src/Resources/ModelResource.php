@@ -3,11 +3,11 @@
 namespace SabatinoMasala\Replicate\Resources;
 
 use SabatinoMasala\Replicate\Requests\CreateModelRequest;
-use Saloon\Contracts\Connector;
 use SabatinoMasala\Replicate\Requests\CreateTrainingRequest;
 use SabatinoMasala\Replicate\Requests\GetAllModelVersionsRequest;
 use SabatinoMasala\Replicate\Requests\GetModelRequest;
 use SabatinoMasala\Replicate\Requests\GetModelVersionRequest;
+use Saloon\Contracts\Connector;
 
 class ModelResource extends Resource
 {
@@ -48,9 +48,9 @@ class ModelResource extends Resource
         return $this->connector->send($req);
     }
 
-    public function createTraining(string $version, array $input, string $webhook)
+    public function createTraining(string $version, array $input, string $destination, string $webhook)
     {
-        $req = new CreateTrainingRequest($this->owner, $this->name, $version);
+        $req = new CreateTrainingRequest($this->owner, $this->name, $version, $destination);
         $req->body()->add('input', $input);
         $req->body()->add('webhook', $webhook);
 

@@ -17,6 +17,7 @@ class CreateTrainingRequest extends Request implements HasBody
         protected string $owner,
         protected string $name,
         protected string $version,
+        protected string $destination,
     ) {
     }
 
@@ -28,7 +29,7 @@ class CreateTrainingRequest extends Request implements HasBody
     protected function defaultBody(): array
     {
         return [
-            'destination' => "{$this->owner}/{$this->name}",
+            'destination' => $this->destination,
         ];
     }
 }
