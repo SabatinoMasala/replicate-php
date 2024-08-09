@@ -39,9 +39,7 @@ class ModelResource extends Resource
 
     public function create($visibility = 'private', $hardware = 'cpu', $description = null)
     {
-        $req = new CreateModelRequest();
-        $req->body()->add('owner', $this->owner);
-        $req->body()->add('name', $this->name);
+        $req = new CreateModelRequest($this->owner, $this->name);
         $req->body()->add('visibility', $visibility);
         $req->body()->add('hardware', $hardware);
         if (!empty($description)) {
